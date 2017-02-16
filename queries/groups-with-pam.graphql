@@ -1,0 +1,11 @@
+{
+  groups {
+    id
+    name
+    member(user: "4") {
+      user {
+        first_name
+      }
+    }
+  }
+}

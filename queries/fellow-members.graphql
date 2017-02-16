@@ -1,0 +1,23 @@
+{
+  users {
+    ...userFields
+    memberships {
+      group {
+        id
+        name
+        members {
+          user {
+            ...userFields
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment userFields on User {
+  id
+  first_name
+  last_name
+  email
+}

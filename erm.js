@@ -26,7 +26,7 @@ var queryType = new graphql.GraphQLObjectType({
           description: 'id of the user'
         }
       },
-      resolve: function(contxt, args, info) {
+      resolve: function(context, args, info) {
         return _.find(data.users, {id: args.id});
       }
     },
@@ -46,7 +46,7 @@ var queryType = new graphql.GraphQLObjectType({
           description: 'id of the group'
         }
       },
-      resolve: function(contxt, args, info) {
+      resolve: function(context, args, info) {
         return _.find(data.groups, {id: args.id});
       }
     }
@@ -72,6 +72,26 @@ var userType = new graphql.GraphQLObjectType({
     email: {
       type: graphql.GraphQLString,
       description: 'The email of the user.',
+    },
+    memberships: {
+      type: new graphql.GraphQLList(groupMemberType),
+      description: 'The group memberships of the user.',
+      resolve: function(context, args, info) {
+        return _.filter(data.members, {user: context.id});
+      }
+    },
+    membership: {
+      type: groupMemberType,
+      description: 'The group membership of the user.',
+      args: {
+        group: {
+          type: new graphql.GraphQLNonNull(graphql.GraphQLString),
+          description: 'id of the group'
+        }
+      },
+      resolve: function(context, args, info) {
+        return _.find(data.members, {user: context.id, group: args.group});
+      }
     }
   }}
 });
@@ -90,6 +110,46 @@ var groupType = new graphql.GraphQLObjectType({
     description: {
       type: graphql.GraphQLString,
       description: 'The description of the group.',
+    },
+    members: {
+      type: new graphql.GraphQLList(groupMemberType),
+      description: 'The members of the group.',
+      resolve: function(context, args, info) {
+        return _.filter(data.members, {group: context.id});
+      }
+    },
+    member: {
+      type: groupMemberType,
+      description: 'The member of the group.',
+      args: {
+        user: {
+          type: new graphql.GraphQLNonNull(graphql.GraphQLString),
+          description: 'id of the user'
+        }
+      },
+      resolve: function(context, args, info) {
+        return _.find(data.members, {user: args.user, group: context.id});
+      }
+    }
+  }}
+});
+
+var groupMemberType = new graphql.GraphQLObjectType({
+  name: 'GroupMember',
+  fields: function() { return {
+    user: {
+      type: userType,
+      description: 'The member user.',
+      resolve: function(context, args, info) {
+        return _.find(data.users, {id: context.user});
+      }
+    },
+    group: {
+      type: groupType,
+      description: 'The member group.',
+      resolve: function(context, args, info) {
+        return _.find(data.groups, {id: context.group});
+      }
     }
   }}
 });
