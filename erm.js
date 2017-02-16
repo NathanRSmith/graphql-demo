@@ -73,6 +73,7 @@ var userType = new graphql.GraphQLObjectType({
       type: graphql.GraphQLString,
       description: 'The email of the user.',
     },
+
     memberships: {
       type: new graphql.GraphQLList(groupMemberType),
       description: 'The group memberships of the user.',
@@ -144,13 +145,18 @@ var groupType = new graphql.GraphQLObjectType({
       type: groupRoleType,
       description: 'The role of the group.',
       args: {
-        role: {
-          type: new graphql.GraphQLNonNull(graphql.GraphQLString),
+        id: {
+          type: graphql.GraphQLString,
           description: 'id of the role'
+        },
+        name: {
+          type: graphql.GraphQLString,
+          description: 'name of the role'
         }
       },
       resolve: function(context, args, info) {
-        return _.find(data.roles, {user: args.role, group: context.id});
+        if(args.id) return _.find(data.roles, {id: args.id, group: context.id});
+        else if(args.name) return _.find(data.roles, {name: args.name, group: context.id});
       }
     },
   }}
@@ -172,7 +178,40 @@ var groupMemberType = new graphql.GraphQLObjectType({
       resolve: function(context, args, info) {
         return _.find(data.groups, {id: context.group});
       }
-    }
+    },
+
+    roles: {
+      type: new graphql.GraphQLList(groupRoleType),
+      description: 'The roles of the member.',
+      resolve: function(context, args, info) {
+        return _.map(context.roles, function(id) {
+          return _.find(data.roles, {id: id});
+        });
+      }
+    },
+    role: {
+      type: groupRoleType,
+      description: 'The role of the member.',
+      args: {
+        id: {
+          type: graphql.GraphQLString,
+          description: 'id of the role'
+        },
+        name: {
+          type: graphql.GraphQLString,
+          description: 'name of the role'
+        }
+      },
+      resolve: function(context, args, info) {
+        var role;
+        debugger
+        if(args.id) role = _.find(data.roles, {id: args.id, group: context.group});
+        else if(args.name) role = _.find(data.roles, {name: args.name, group: context.group});
+        else return;
+
+        if(role && _.includes(context.roles, role.id)) return role;
+      }
+    },
   }}
 });
 
@@ -193,7 +232,17 @@ var groupRoleType = new graphql.GraphQLObjectType({
       resolve: function(context, args, info) {
         return _.find(data.groups, {id: context.group});
       }
-    }
+    },
+
+    members: {
+      type: new graphql.GraphQLList(groupMemberType),
+      description: 'The members of the role.',
+      resolve: function(context, args, info) {
+        return _.filter(data.members, function(member) {
+          return _.includes(member.roles, context.id);
+        });
+      }
+    },
   }}
 });
 

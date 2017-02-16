@@ -1,0 +1,13 @@
+{
+  groups {
+    name
+    roles {
+      name
+      members {
+        user {
+          first_name
+        }
+      }
+    }
+  }
+}

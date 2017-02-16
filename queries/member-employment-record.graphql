@@ -1,0 +1,21 @@
+{
+  group(id: "4") {
+    name
+    role(name: "Sales") {
+      name
+      members {
+        user {
+          first_name
+          memberships {
+            group {
+              name
+            }
+            roles {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}

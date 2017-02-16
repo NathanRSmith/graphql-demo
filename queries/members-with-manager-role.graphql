@@ -1,0 +1,14 @@
+{
+  users {
+    first_name
+    memberships {
+      group {
+        name
+      }
+      role(name: "Manager") {
+        id
+        name
+      }
+    }
+  }
+}
