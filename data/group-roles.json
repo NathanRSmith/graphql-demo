@@ -1,0 +1,71 @@
+[
+  {
+    "id": "1",
+    "group": "1",
+    "name": "Employee"
+  },
+  {
+    "id": "2",
+    "group": "1",
+    "name": "Manager"
+  },
+  {
+    "id": "3",
+    "group": "1",
+    "name": "Sales"
+  },
+
+  {
+    "id": "4",
+    "group": "2",
+    "name": "Employee"
+  },
+  {
+    "id": "5",
+    "group": "2",
+    "name": "Manager"
+  },
+  {
+    "id": "6",
+    "group": "2",
+    "name": "Sales"
+  },
+
+  {
+    "id": "7",
+    "group": "3",
+    "name": "Employee"
+  },
+  {
+    "id": "8",
+    "group": "3",
+    "name": "Manager"
+  },
+  {
+    "id": "9",
+    "group": "3",
+    "name": "Sales"
+  },
+
+  {
+    "id": "10",
+    "group": "4",
+    "name": "Owner"
+  },
+  {
+    "id": "11",
+    "group": "4",
+    "name": "Employee"
+  },
+  {
+    "id": "12",
+    "group": "4",
+    "name": "Sales"
+  },
+
+  {
+    "id": "13",
+    "group": "5",
+    "name": "Owner"
+  }
+]

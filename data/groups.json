@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "name": "Dunder Mifflin Scranton",
+    "description": "A paper company in Scranton PA"
+  },
+  {
+    "id": "2",
+    "name": "Dunder Mifflin Stamford",
+    "description": "A paper company in Stamford CT"
+  },
+  {
+    "id": "3",
+    "name": "Sabre",
+    "description": "A printer company"
+  },
+  {
+    "id": "4",
+    "name": "Michael Scott Paper Company",
+    "description": "Another printer company"
+  },
+  {
+    "id": "5",
+    "name": "Schrute Farms",
+    "description": "Agritourism"
+  }
+]

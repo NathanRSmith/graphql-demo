@@ -1,0 +1,66 @@
+[
+  {
+    "_note": "michael scranton",
+    "user": "1",
+    "group": "1"
+  },
+  {
+    "_note": "dwight scranton",
+    "user": "2",
+    "group": "1"
+  },
+  {
+    "_note": "jim scranton",
+    "user": "3",
+    "group": "1"
+  },
+  {
+    "_note": "pam scranton",
+    "user": "4",
+    "group": "1"
+  },
+
+  {
+    "_note": "jim stamford",
+    "user": "3",
+    "group": "2"
+  },
+
+  {
+    "_note": "michael sabre",
+    "user": "1",
+    "group": "3"
+  },
+  {
+    "_note": "dwight sabre",
+    "user": "2",
+    "group": "3"
+  },
+  {
+    "_note": "jim sabre",
+    "user": "3",
+    "group": "3"
+  },
+  {
+    "_note": "pam sabre",
+    "user": "4",
+    "group": "3"
+  },
+
+  {
+    "_note": "michael paper",
+    "user": "1",
+    "group": "4"
+  },
+  {
+    "_note": "pam paper",
+    "user": "4",
+    "group": "3"
+  },
+
+  {
+    "_note": "dwight farm",
+    "user": "2",
+    "group": "5"
+  }
+]

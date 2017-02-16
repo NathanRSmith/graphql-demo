@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "first_name": "Michael",
+    "last_name": "Scott",
+    "email": "mscott@dundermifflin.com"
+  },
+  {
+    "id": "2",
+    "first_name": "Dwight",
+    "last_name": "Schrute",
+    "email": "dschrute@dundermifflin.com"
+  },
+  {
+    "id": "3",
+    "first_name": "Jim",
+    "last_name": "Halpert",
+    "email": "jhalpert@dundermifflin.com"
+  },
+  {
+    "id": "4",
+    "first_name": "Pam",
+    "last_name": "Beasley",
+    "email": "pbeasley@dundermifflin.com"
+  }
+]
