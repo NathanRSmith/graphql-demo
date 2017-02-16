@@ -204,10 +204,8 @@ var groupMemberType = new graphql.GraphQLObjectType({
       },
       resolve: function(context, args, info) {
         var role;
-        debugger
         if(args.id) role = _.find(data.roles, {id: args.id, group: context.group});
         else if(args.name) role = _.find(data.roles, {name: args.name, group: context.group});
-        else return;
 
         if(role && _.includes(context.roles, role.id)) return role;
       }
