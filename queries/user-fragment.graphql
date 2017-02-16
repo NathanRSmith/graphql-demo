@@ -1,0 +1,15 @@
+{
+  users {
+    ...userFields
+  }
+  user(id: "1") {
+    ...userFields
+  }
+}
+
+fragment userFields on User {
+  id
+  first_name
+  last_name
+  email
+}

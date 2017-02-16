@@ -17,6 +17,18 @@ var queryType = new graphql.GraphQLObjectType({
       resolve: function(context, args, info) {
         return data.users;
       }
+    },
+    user: {
+      type: userType,
+      args: {
+        id: {
+          type: new graphql.GraphQLNonNull(graphql.GraphQLString),
+          description: 'id of the user'
+        }
+      },
+      resolve: function(contxt, args, info) {
+        return _.find(data.users, {id: args.id});
+      }
     }
   }}
 });

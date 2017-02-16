@@ -1,0 +1,7 @@
+{
+  user(id: "1") {
+    id
+    first_name
+    last_name
+  }
+}
