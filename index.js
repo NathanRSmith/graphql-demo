@@ -14,10 +14,25 @@ var app = express();
 app.use(bunyanLogger({logger: this.logger, excludes: ['req','res', 'user-agent'], obfuscate: ['body.password']}));
 app.use(bodyParser.json({limit:'1mb'})); // for application/json
 
-app.get('/hello', function(req, res) {
+app.get('/hello', function(req, rep) {
   res.send('Hello World!');
 });
 
+app.post('/query', function(req, rep) {
+  graphql.graphql(erm, req.body.query, {})
+    .then(function(res) {
+      // make any errors serializable
+      if(res.errors) res.errors = _.map(res.errors, errToJSON);
+      rep.status(200).json(res).end();
+    })
+    .catch(function(err) {
+      rep.status(500).json(errToJSON(err)).end();
+    });
+});
+
+function errToJSON(err) {
+  return _.pick(err, ['name', 'message']);
+}
 
 
 
