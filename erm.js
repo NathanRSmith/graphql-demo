@@ -29,6 +29,26 @@ var queryType = new graphql.GraphQLObjectType({
       resolve: function(contxt, args, info) {
         return _.find(data.users, {id: args.id});
       }
+    },
+
+
+    groups: {
+      type: new graphql.GraphQLList(groupType),
+      resolve: function(context, args, info) {
+        return data.groups;
+      }
+    },
+    group: {
+      type: groupType,
+      args: {
+        id: {
+          type: new graphql.GraphQLNonNull(graphql.GraphQLString),
+          description: 'id of the group'
+        }
+      },
+      resolve: function(contxt, args, info) {
+        return _.find(data.groups, {id: args.id});
+      }
     }
   }}
 });
@@ -54,7 +74,25 @@ var userType = new graphql.GraphQLObjectType({
       description: 'The email of the user.',
     }
   }}
-})
+});
+
+var groupType = new graphql.GraphQLObjectType({
+  name: 'Group',
+  fields: function() { return {
+    id: {
+      type: new graphql.GraphQLNonNull(graphql.GraphQLString),
+      description: 'The id of the group.'
+    },
+    name: {
+      type: graphql.GraphQLString,
+      description: 'The name of the group.',
+    },
+    description: {
+      type: graphql.GraphQLString,
+      description: 'The description of the group.',
+    }
+  }}
+});
 
 
 

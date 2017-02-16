@@ -1,0 +1,10 @@
+{
+  groups {
+    id
+    name
+    description
+  }
+  group(id: "5") {
+    name
+  }
+}
