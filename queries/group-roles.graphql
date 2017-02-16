@@ -1,0 +1,10 @@
+{
+  groups {
+    id
+    name
+    roles {
+      id
+      name
+    }
+  }
+}
