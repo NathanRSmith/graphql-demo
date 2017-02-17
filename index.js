@@ -15,7 +15,7 @@ app.use(bunyanLogger({logger: this.logger, excludes: ['req','res', 'user-agent']
 app.use(bodyParser.json({limit:'1mb'})); // for application/json
 
 app.get('/hello', function(req, rep) {
-  res.send('Hello World!');
+  rep.send('Hello World!');
 });
 
 app.post('/query', function(req, rep) {

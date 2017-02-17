@@ -2,6 +2,8 @@
 
 Demo for presentations about GraphQL. Implements a sample ERM involving users, groups, memberships and group roles. See `erd.pdf` for visual representation. Data is stored in JSON files in the `data/` directory. In real life the models would resolve via a call to a database or other service.
 
+See slides from the talk that this demo was created for in `Local_Variables_Feb_16_2017.pdf`.
+
 Components include:
 
 * Simple express.js server with `POST /query` route that accepts `{"query": "<query>"}` body.
